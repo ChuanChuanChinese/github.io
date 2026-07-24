@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese with Chuan — Learn Mandarin, Find Your Voice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Noto+Serif+SC:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6EFE2;
+    --cream-deep:#EFE4CF;
+    --ink:#2A231C;
+    --ink-soft:#5C5044;
+    --red:#B5342A;
+    --red-deep:#8B241C;
+    --gold:#B8862E;
+    --card:#FFFBF3;
+    --line:#E1D2B4;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  .cn{font-family:'Noto Serif SC',serif;}
+  .display{font-family:'Fraunces',serif;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,239,226,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);}
+  .brand svg{height:34px;width:auto;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.05;}
+  .brand-text .en{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:0.01em;}
+  .brand-text .sub{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);}
+  .menu{display:flex;align-items:center;gap:36px;list-style:none;margin:0;padding:0;}
+  .menu a{
+    font-size:0.92rem;font-weight:500;text-decoration:none;color:var(--ink);
+    position:relative;padding-bottom:4px;
+  }
+  .menu a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--red);
+    transition:width .25s ease;
+  }
+  .menu a:hover::after{width:100%;}
+  .menu .cta{
+    background:var(--red);color:#fff !important;padding:10px 20px;border-radius:3px;
+    font-weight:600;
+  }
+  .menu .cta::after{display:none;}
+  .menu .cta:hover{background:var(--red-deep);}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  .burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:88px 0 96px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;
+  }
+  .eyebrow{
+    font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);
+    font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--red);display:inline-block;}
+  h1.hero-title{
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    line-height:1.12;margin:0 0 10px;font-weight:600;
+  }
+  h1.hero-title .cn-line{
+    display:block;font-family:'Noto Serif SC',serif;font-weight:700;
+    font-size:clamp(2.6rem,5.6vw,4rem);color:var(--ink);margin-bottom:6px;
+  }
+  .hero-en{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    color:var(--red-deep);font-size:clamp(1.3rem,2.3vw,1.7rem);
+  }
+  .hero-sub{
+    margin:22px 0 34px;color:var(--ink-soft);font-size:1.05rem;line-height:1.7;max-width:46ch;
+  }
+  .hero-sub .cn{display:block;color:var(--ink);font-size:1.05rem;margin-bottom:6px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--red);color:#fff;text-decoration:none;
+    padding:15px 30px;border-radius:3px;font-weight:600;font-size:0.98rem;
+    border:1px solid var(--red);transition:all .2s ease;
+  }
+  .btn:hover{background:var(--red-deep);border-color:var(--red-deep);}
+  .btn-outline{
+    background:transparent;color:var(--ink);border:1px solid var(--ink);
+  }
+  .btn-outline:hover{background:var(--ink);color:var(--cream);}
+  .hero-art{position:relative;height:420px;}
+  .hero-art svg{position:absolute;inset:0;width:100%;height:100%;}
+
+  /* divider stream */
+  .stream-divider{padding:6px 0;}
+  .stream-divider svg{width:100%;height:56px;display:block;}
+
+  section{padding:96px 0;}
+  .section-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+  .section-head .eyebrow{justify-content:center;}
+  .section-head .eyebrow::before{display:none;}
+  .section-head h2{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.9rem,3.4vw,2.5rem);
+    margin:0 0 14px;
+  }
+  .section-head p{color:var(--ink-soft);font-size:1.02rem;line-height:1.7;margin:0;}
+
+  /* ---------- Courses ---------- */
+  .courses-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;
+  }
+  .course-card{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;
+    padding:32px 26px;display:flex;flex-direction:column;gap:14px;
+    position:relative;transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .course-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(42,35,28,0.35);}
+  .course-tag{
+    font-family:'Noto Serif SC',serif;font-weight:700;font-size:1.6rem;color:var(--red);
+    line-height:1;
+  }
+  .course-card h3{
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.22rem;margin:0;
+  }
+  .course-card p.desc{color:var(--ink-soft);font-size:0.94rem;line-height:1.6;margin:0;flex-grow:1;}
+  .course-price{
+    font-weight:600;font-size:0.92rem;color:var(--ink);
+    border-top:1px dashed var(--line);padding-top:14px;margin-top:4px;
+  }
+  .course-price span{color:var(--gold);}
+  .course-card .btn{
+    justify-content:center;padding:11px 20px;font-size:0.9rem;margin-top:6px;
+  }
+
+  /* ---------- Teacher ---------- */
+  .teacher-wrap{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:center;
+  }
+  .teacher-photo-frame{
+    position:relative;
+  }
+  .teacher-photo-frame .photo{
+    width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;
+    border:1px solid var(--line);
+  }
+  .seal{
+    position:absolute;bottom:-22px;right:-22px;
+    width:84px;height:84px;border-radius:50%;background:var(--red);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 24px -10px rgba(181,52,42,0.55);
+  }
+  .seal span{font-family:'Noto Serif SC',serif;color:var(--cream);font-size:1.9rem;font-weight:700;}
+  .teacher-name{
+    font-family:'Fraunces',serif;font-weight:600;font-size:2.1rem;margin:0 0 4px;
+  }
+  .teacher-name .cn{font-size:1.6rem;color:var(--red-deep);margin-left:10px;}
+  .teacher-role{color:var(--ink-soft);font-size:0.95rem;letter-spacing:0.04em;text-transform:uppercase;margin:0 0 22px;}
+  .teacher-bio{font-size:1.04rem;line-height:1.8;color:var(--ink-soft);margin:0 0 30px;max-width:52ch;}
+  .stat-row{display:flex;gap:36px;margin-bottom:32px;}
+  .stat-row .stat b{
+    display:block;font-family:'Fraunces',serif;font-size:1.8rem;color:var(--red);font-weight:600;
+  }
+  .stat-row .stat span{font-size:0.82rem;color:var(--ink-soft);}
+
+  /* ---------- Enroll form ---------- */
+  #enroll{background:var(--cream-deep);}
+  .form-shell{
+    max-width:620px;margin:0 auto;background:var(--card);
+    border:1px solid var(--line);border-radius:8px;padding:44px 40px;
+  }
+  .form-row{margin-bottom:22px;}
+  .form-row label{
+    display:block;font-size:0.85rem;font-weight:600;margin-bottom:8px;color:var(--ink);
+  }
+  .form-row input,.form-row select,.form-row textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:4px;
+    background:#fff;font-family:'Inter',sans-serif;font-size:0.96rem;color:var(--ink);
+  }
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{
+    outline:2px solid var(--red);outline-offset:1px;border-color:var(--red);
+  }
+  .form-row textarea{resize:vertical;min-height:90px;}
+  .form-two{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .form-shell .btn{width:100%;justify-content:center;padding:15px;font-size:1rem;}
+  .form-note{font-size:0.8rem;color:var(--ink-soft);margin-top:14px;text-align:center;}
+
+  /* ---------- Contact / footer ---------- */
+  footer{background:var(--ink);color:var(--cream);padding:72px 0 32px;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;margin-bottom:56px;
+  }
+  footer .brand-text .en{color:var(--cream);}
+  footer .brand-text .sub{color:#B9AE9C;}
+  footer p{color:#C9BFAC;line-height:1.7;font-size:0.95rem;}
+  footer h4{
+    font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:#B9AE9C;
+    margin:0 0 18px;font-weight:600;
+  }
+  .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .contact-list a{text-decoration:none;color:var(--cream);font-size:0.96rem;}
+  .contact-list a:hover{color:var(--gold);}
+  .footer-bottom{
+    border-top:1px solid rgba(246,239,226,0.15);padding-top:24px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    font-size:0.82rem;color:#8C816F;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{height:220px;order:-1;}
+    .teacher-wrap{grid-template-columns:1fr;}
+    .teacher-photo-frame{max-width:340px;margin:0 auto;}
+    .footer-grid{grid-template-columns:1fr;gap:36px;}
+  }
+  @media (max-width:720px){
+    .menu{
+      position:fixed;top:76px;left:0;right:0;background:var(--cream);
+      flex-direction:column;align-items:flex-start;gap:0;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-8px);opacity:0;pointer-events:none;
+      transition:all .2s ease;
+    }
+    .menu.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    .menu li{width:100%;padding:16px 28px;border-top:1px solid var(--line);}
+    .menu a{display:block;}
+    .menu .cta{margin:16px 28px;text-align:center;}
+    .burger{display:block;}
+    section{padding:64px 0;}
+    .hero{padding:56px 0 64px;}
+    .form-two{grid-template-columns:1fr;}
+    .form-shell{padding:32px 22px;}
+    .stat-row{gap:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M14 10C14 10 10 30 10 38C10 44 13 48 13 48" stroke="#B5342A" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M30 8C30 8 26 32 26 42C26 49 30 52 30 52" stroke="#B5342A" stroke-width="4.5" stroke-linecap="round"/>
+        <path d="M46 10C46 10 42 30 42 38C42 44 45 48 45 48" stroke="#B8862E" stroke-width="4.5" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-text">
+        <span class="en">Chinese with Chuan</span>
+        <span class="sub">川川中文</span>
+      </span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#courses">Courses 课程介绍</a></li>
+      <li><a href="#teacher">Teacher 老师介绍</a></li>
+      <li><a href="#enroll" class="cta">Enroll 购买课程</a></li>
+      <li><a href="#contact">Contact 联系我们</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Online Mandarin, 1‑on‑1</p>
+        <h1 class="hero-title">
+          <span class="cn-line">学中文，从这里走向世界</span>
+          <span class="hero-en">Learn Chinese. Step into the world.</span>
+        </h1>
+        <p class="hero-sub">
+          <span class="cn">让我们说中文、用中文链接世界</span>
+          Let's speak Chinese — and use it to connect with the world. Warm, structured 1-on-1 lessons built around your goals, from your very first "nǐ hǎo" to real conversations.
+        </p>
+        <a href="#enroll" class="btn">预定试听课 &nbsp;Book a Trial Class →</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 300 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M70 30C70 30 40 160 40 240C40 320 66 380 66 380" stroke="#B5342A" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+          <path d="M150 10C150 10 118 170 118 260C118 340 150 400 150 400" stroke="#B5342A" stroke-width="10" stroke-linecap="round"/>
+          <path d="M230 30C230 30 200 160 200 240C200 320 226 380 226 380" stroke="#B8862E" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="stream-divider wrap" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 30 C 200 5, 300 55, 500 30 S 800 5, 1000 30 S 1150 45, 1200 30" stroke="#E1D2B4" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- ================= COURSES ================= -->
+  <section id="courses">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">课程介绍</p>
+        <h2>Find your course</h2>
+        <p>Five learning tracks, from your first tones to fluent, real-world conversation — all taught 1-on-1, live online.</p>
+      </div>
+      <div class="courses-grid">
+
+        <div class="course-card">
+          <span class="course-tag">零</span>
+          <h3>Beginner Foundations</h3>
+          <p class="desc">零基础入门 — start from zero: pinyin, tones, and everyday essentials, built step by step.</p>
+          <div class="course-price">18-lesson package · <span>$300</span></div>
+          <a href="#enroll" class="btn btn-outline">Enroll</a>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">说</span>
+          <h3>Conversational Chinese</h3>
+          <p class="desc">口语中文 — build the confidence to speak naturally in everyday, real-life situations.</p>
+          <div class="course-price">10-lesson package · <span>$200</span></div>
+          <a href="#enroll" class="btn btn-outline">Enroll</a>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">考</span>
+          <h3>HSK Exam Prep</h3>
+          <p class="desc">HSK 备考 — focused, structured coaching to help you pass your HSK level with confidence.</p>
+          <div class="course-price">Custom Chinese track · <span>$30/lesson</span></div>
+          <a href="#enroll" class="btn btn-outline">Enroll</a>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">游</span>
+          <h3>Travel Chinese</h3>
+          <p class="desc">旅游中文 — the phrases and confidence you need to travel through China with ease.</p>
+          <div class="course-price">10-lesson package · <span>$200</span></div>
+          <a href="#enroll" class="btn btn-outline">Enroll</a>
+        </div>
+
+        <div class="course-card">
+          <span class="course-tag">定</span>
+          <h3>Custom Chinese <span style="font-weight:400;font-size:0.85rem;color:var(--ink-soft);">(incl. HSK Prep)</span></h3>
+          <p class="desc">定制中文 — a fully personalized plan built around your goals, including HSK exam preparation.</p>
+          <div class="course-price">Per lesson · <span>$30</span></div>
+          <a href="#enroll" class="btn btn-outline">Enroll</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="stream-divider wrap" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 30 C 200 55, 300 5, 500 30 S 800 55, 1000 30 S 1150 15, 1200 30" stroke="#E1D2B4" stroke-width="1.5" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- ================= TEACHER ================= -->
+  <section id="teacher" style="background:var(--card);">
+    <div class="wrap teacher-wrap">
+      <div class="teacher-photo-frame">
+        <img class="photo" src="teacher-photo.jpg" alt="Portrait of Chuan Chuan, Mandarin teacher">
+        <div class="seal"><span>川</span></div>
+      </div>
+      <div>
+        <p class="eyebrow">老师介绍</p>
+        <h2 class="teacher-name">Chuān Chuān<span class="cn">川川</span></h2>
+        <p class="teacher-role">Mandarin Teacher · 1-on-1 Online</p>
+        <div class="stat-row">
+          <div class="stat"><b>4</b><span>years teaching</span></div>
+          <div class="stat"><b>1:1</b><span>online lessons</span></div>
+        </div>
+        <p class="teacher-bio">
+          Four years of 1-on-1 online teaching experience, helping students find the courage to open their mouths and speak Chinese — and, along the way, build a genuinely Chinese way of thinking.
+        </p>
+        <a href="#enroll" class="btn">Enroll with Chuan Chuan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENROLL FORM ================= -->
+  <section id="enroll">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">报名</p>
+        <h2>Book your trial class</h2>
+        <p>Tell me a little about yourself and I'll follow up by email to schedule your class.</p>
+      </div>
+
+      <form class="form-shell" action="https://formspree.io/f/mrenyabz" method="POST">
+        <div class="form-row">
+          <label for="level">Current Chinese level 中文水平</label>
+          <select id="level" name="Chinese level" required>
+            <option value="">Select your level</option>
+            <option>Zero / Absolute beginner 零基础</option>
+            <option>Beginner 初级</option>
+            <option>Intermediate 中级</option>
+            <option>Advanced 高级</option>
+          </select>
+        </div>
+        <div class="form-two">
+          <div class="form-row">
+            <label for="name">Name 姓名</label>
+            <input type="text" id="name" name="Name" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email 邮箱</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="goal">Learning goal 学习目标</label>
+          <textarea id="goal" name="Learning goal" placeholder="e.g. travel, HSK exam, everyday conversation, business Chinese..." required></textarea>
+        </div>
+        <button type="submit" class="btn">Submit &nbsp;提交</button>
+        <p class="form-note">Your information goes directly to Chuan Chuan and is never shared.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER / CONTACT ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="brand" style="margin-bottom:16px;">
+          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 10C14 10 10 30 10 38C10 44 13 48 13 48" stroke="#B5342A" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M30 8C30 8 26 32 26 42C26 49 30 52 30 52" stroke="#B5342A" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M46 10C46 10 42 30 42 38C42 44 45 48 45 48" stroke="#B8862E" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-text">
+            <span class="en">Chinese with Chuan</span>
+            <span class="sub">川川中文</span>
+          </span>
+        </a>
+        <p>Warm, structured 1-on-1 Mandarin lessons — from your first "nǐ hǎo" to real, confident conversation.</p>
+      </div>
+      <div>
+        <h4>联系我们 Contact</h4>
+        <ul class="contact-list">
+          <li><a href="mailto:ckim68801@gmail.com">ckim68801@gmail.com</a></li>
+          <li><a href="tel:+15150614482">+1 515 061 4482</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul class="contact-list">
+          <li><a href="https://www.youtube.com/@ChuanKim-rv7rh" target="_blank" rel="noopener">YouTube · @ChuanKim-rv7rh</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Chinese with Chuan · 川川中文</span>
+      <span>Made with 川 — learning that never stops flowing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+</script>
+
+</body>
+</html>
