@@ -206,6 +206,15 @@
   .form-two{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .form-shell .btn{width:100%;justify-content:center;padding:15px;font-size:1rem;}
   .form-note{font-size:0.8rem;color:var(--ink-soft);margin-top:14px;text-align:center;}
+  .booking-card h3{margin:0 0 26px;text-align:center;font-family:'Fraunces','Noto Serif SC',serif;font-size:1.55rem;}
+  .booking-steps{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .booking-steps li{position:relative;text-align:center;padding:0 6px;color:var(--ink-soft);font-size:0.82rem;line-height:1.45;}
+  .booking-steps li:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:12px;color:var(--gold);font-size:1.05rem;}
+  .booking-step-number{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 10px;border-radius:50%;background:var(--red);color:#fff;font-weight:700;}
+  .booking-steps strong{display:block;color:var(--ink);font-size:0.88rem;margin-bottom:3px;}
+  .booking-notes{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;color:var(--ink-soft);font-size:0.88rem;line-height:1.7;}
+  .booking-notes summary{cursor:pointer;color:var(--ink);font-weight:600;list-style-position:outside;margin-left:18px;}
+  .booking-notes ul{margin:14px 0 6px;padding-left:22px;}
 
   /* ---------- Contact / footer ---------- */
   footer{background:var(--ink);color:var(--cream);padding:72px 0 32px;}
@@ -236,7 +245,7 @@
     .teacher-photo-frame{max-width:340px;margin:0 auto;}
     .footer-grid{grid-template-columns:1fr;gap:36px;}
   }
-  @media (max-width:720px){
+  @media (max-width:920px){
     .menu{
       position:fixed;top:76px;left:0;right:0;background:var(--cream);
       flex-direction:column;align-items:flex-start;gap:0;
@@ -254,6 +263,10 @@
     .form-two{grid-template-columns:1fr;}
     .form-shell{padding:32px 22px;}
     .stat-row{gap:24px;}
+  }
+  @media (max-width:620px){
+    .booking-steps{grid-template-columns:1fr 1fr;gap:20px 10px;}
+    .booking-steps li:not(:last-child)::after{display:none;}
   }
 #enroll,#courses,#teacher,#contact{scroll-margin-top:90px;}
 </style>
@@ -414,13 +427,25 @@
         <p>Choose an available time in your local time zone. Chuan Chuan will verify the payment and send the confirmed Google Meet link by email.<br>按当地时区选择可预约时间；老师核实付款后，系统将通过邮件发送确认信息和 Google Meet 链接。</p>
       </div>
 
-      <div class="form-shell" style="margin-bottom:24px;line-height:1.8;">
-        <h3 style="margin-top:0;">How lessons work 上课安排</h3>
-        <p>Choose a lesson and time → follow the payment instructions → teacher verifies the payment → receive your Google Meet link.</p>
-        <ul><li>50 minutes per lesson · 每课时50分钟</li><li>Please arrange lessons at least 48 hours in advance · 至少提前48小时安排课程</li><li>At least 10 minutes between lessons · 课间至少保留10分钟</li><li>Teacher scheduling uses Beijing time (Asia/Shanghai). Please include your local time zone; the time zone will be stated when confirming your lesson.<br>老师按北京时间排课，请注明你的当地时区，确认邮件将明确上课时区。</li></ul>
-        <p><a class="btn" href="https://chuanchuan-booking.chuanchuan-booking-cloudflare.workers.dev/">Book online now &nbsp;现在预约课程 →</a></p>
-        <p>PayPal payment is verified manually by the teacher before a lesson is confirmed. Reporting a payment does not itself confirm a booking.<br>PayPal 付款由老师核实到账后确认；提交“已付款”不代表课程已经确认。</p>
-        <p>For changes, cancellations or refunds, email <a href="mailto:ckim68801@gmail.com">ckim68801@gmail.com</a>. Applicable terms will be agreed before payment.<br>改期、取消及退款请通过邮件联系老师，付款前双方确认适用条款。</p>
+      <div class="form-shell booking-card" style="margin-bottom:24px;">
+        <h3>Four simple steps 四步完成预约</h3>
+        <ol class="booking-steps">
+          <li><span class="booking-step-number">1</span><strong>Choose a lesson</strong>选择课程</li>
+          <li><span class="booking-step-number">2</span><strong>Pick your time</strong>选择当地时间</li>
+          <li><span class="booking-step-number">3</span><strong>Complete payment</strong>按照邮件付款</li>
+          <li><span class="booking-step-number">4</span><strong>Receive Meet link</strong>收取上课链接</li>
+        </ol>
+        <a class="btn" href="https://chuanchuan-booking.chuanchuan-booking-cloudflare.workers.dev/">Book a lesson &nbsp;预约课程 →</a>
+        <details class="booking-notes">
+          <summary>Booking details 预约须知</summary>
+          <ul>
+            <li>50 minutes per lesson · 每课时50分钟</li>
+            <li>Book at least 48 hours in advance · 至少提前48小时预约</li>
+            <li>Times are shown in your selected local time zone · 预约时间按所选当地时区显示</li>
+            <li>PayPal payment is checked by the teacher before confirmation · 老师核实付款后确认课程</li>
+          </ul>
+          <p>For changes, cancellations or refunds, email <a href="mailto:ckim68801@gmail.com">ckim68801@gmail.com</a>.</p>
+        </details>
       </div>
       <form class="form-shell" action="https://formspree.io/f/mrenyabz" method="POST">
         <h3 style="margin-top:0;">Questions before booking? 预约前咨询</h3>
